@@ -6,7 +6,7 @@ function Stores () {
     <div>
 
     <h1>List of Stores</h1>
-    <Link to='/SorP'><button>Store 1</button></Link>
+    <Link to='/sorp'><button>Store 1</button></Link>
     </div>
     )
 }
