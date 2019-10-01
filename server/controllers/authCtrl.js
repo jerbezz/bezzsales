@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
-        const { firstName, lastName, email, password } = req.body
+        const {firstName, lastName, email, password} = req.body
         const db = req.app.get('db')
         const userArr = await db.find_user_by_email([email])
         if (userArr[0]){

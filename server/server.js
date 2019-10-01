@@ -4,6 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 
 //controllers from server/controllers
+const authCtrl = require('./controllers/authCtrl')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -25,4 +26,8 @@ app.use(session({
     saveUninitialized: false
 }))
 
-// endpoints for controllers
+// authorization endpoints
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.get('/logout', authCtrl.logout)
+app.get('/auth/user-data', authCtrl.userData)
