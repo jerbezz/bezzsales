@@ -41,11 +41,13 @@ create table purchases (
     storeId integer references stores(storeId),
     vendor varchar(55),
     amount integer,
-    itemDesc varchar(55)
+    itemDesc varchar(55),
+    purchaseDate date
 );
 
 create table sales (
     salesNumber serial primary key,
     storeId integer references stores(storeId),
-    itemNumber integer references salesItems(itemNumber)
+    itemNumber integer references salesItems(itemNumber),
+    saleDate date
 );
