@@ -29,7 +29,7 @@ module.exports = {
         if(!result){
             return res.status(200).send({message: 'incorrect password'})
         }
-        req.session.user = {firstName: userAcc[0].firstName, lastName: userAcc[0].lastName, email: userAcc[0].email, id: userAcc[0].userId, isAdmin: userAcc[0].isAdmin}
+        req.session.user = {firstName: userAcc[0].firstname, lastName: userAcc[0].lastname, email: userAcc[0].email, id: userAcc[0].userid, isAdmin: userAcc[0].isadmin}
         res.status(200).send({
             message: 'log in successful',
             userData: req.session.user,
@@ -43,5 +43,6 @@ module.exports = {
     userData: (req, res) => {
         if(req.session.user) res.status(200).send(req.session.user)
       else res.status(401).send('please log in');
+      console.log(req.session.user)
     }
 }
