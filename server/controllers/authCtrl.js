@@ -25,7 +25,7 @@ module.exports = {
         if (!userAcc[0]) {
             return res.status(200).send({message: 'account not found'})
         }
-        let result = bcrypt.compareSync(password, userAcc[0].passHash)
+        let result = bcrypt.compareSync(password, userAcc[0].passhash)
         if(!result){
             return res.status(200).send({message: 'incorrect password'})
         }

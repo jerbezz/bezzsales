@@ -5,7 +5,8 @@ function Home () {
     return (
     <div>
         <h1>Hello Puppet</h1>
-        <Link to='/storeselector'><button>Login</button></Link>
+        <Link to='/register'><button>Register</button></Link>
+        <Link to='/login'><button>Login</button></Link>
     </div>
     )}
 

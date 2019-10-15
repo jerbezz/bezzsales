@@ -6,6 +6,8 @@ import Stores from './Components/Stores/Stores'
 import SandPSelector from './Components/SandPSelector/SandPSelector'
 import Sale from './Components/Sale/Sale'
 import Purchase from './Components/Purchase/Purchase'
+import Login from './Components/Login/Login'
+import Register from './Components/Register/Register'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path='/sorp' component={SandPSelector}/>
         <Route path='/sale' component={Sale}/>
         <Route path='/purchase' component={Purchase}/>
+        <Route path='/register' component={Register}/>
+        <Route path='/login' component={Login}/>
       </Switch>
     </HashRouter>
   );
