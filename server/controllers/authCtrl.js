@@ -11,7 +11,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
         let newUserArr = await db.registerUser([firstName, lastName, email, hash])
-        req.session.user = {firstName: newUserArr[0].firstName, lastName: newUserArr[0].lastName, email: newUserArr[0].email, id: newUserArr[0].userId, isAdmin: newUserArr[0].isAdmin};
+        req.session.user = {firstName: newUserArr[0].firstname, lastName: newUserArr[0].lastname, email: newUserArr[0].email, id: newUserArr[0].userid, isAdmin: newUserArr[0].isadmin};
         res.status(200).send({
             message: 'logged in',
             userData: req.session.user,
@@ -23,11 +23,11 @@ module.exports = {
         const db = req.app.get('db')
         const userAcc = await db.loginUser([email])
         if (!userAcc[0]) {
-            return res.status(200).send({message: 'account not found'})
+            return res.status(200).send({message: 'email or password is incorrect'})
         }
         let result = bcrypt.compareSync(password, userAcc[0].passhash)
         if(!result){
-            return res.status(200).send({message: 'incorrect password'})
+            return res.status(200).send({message: 'email or password is incorrect'})
         }
         req.session.user = {firstName: userAcc[0].firstname, lastName: userAcc[0].lastname, email: userAcc[0].email, id: userAcc[0].userid, isAdmin: userAcc[0].isadmin}
         res.status(200).send({

@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
-function Login (props) {
+function Login(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -13,37 +13,32 @@ function Login (props) {
                 password: password,
             })
             if (res.data.loggedIn) props.history.push("/storeselector")
-            else alert(res.data)
+            else alert(res.data.message)
         } catch (error) {
             console.log({ error })
         }
     }
-
-    console.log({email})
-    console.log({password})
 
     return (
         <div>
             Login
 
             <form onSubmit={handleLogin}>
-                    <input
-                        className="regInput"
-                        type="text"
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        className="regInput"
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <div className="createAccount">
-                        <button className="regButton" type="submit">
-                            Login
+                <input
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <div>
+                    <button type="submit">
+                        Login
                         </button>
-                    </div>
+                </div>
             </form>
         </div>
     )
