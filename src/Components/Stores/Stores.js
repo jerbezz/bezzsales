@@ -5,25 +5,8 @@ import axios from 'axios'
 function Stores () {
     const [data, setData] = useState([])
 
-    // useEffect(() => {
-    //     getData()
-    // }, [])
-
-    // const getAuth = async () => {
-    //     let res = await axios.get("/auth/user-data")
-    //     setPost(res.data)
-    // }
-
-    // useEffect(async () => {
-    //     const results = await axios(
-    //         "/auth/user-data"
-    //     )
-    //     setData(results.data)
-    // })
-
     async function getUserData() {
         const response = await axios.get('/auth/user-data')
-        // const json = await response
         setData(response.data)
     }
     useEffect(() => {
