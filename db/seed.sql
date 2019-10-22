@@ -1,53 +1,53 @@
 create table company (
-    companyId serial primary key,
-    companyName varchar(255)
+    company_id serial primary key,
+    company_name varchar(255)
 );
 
 create table users (
-    userId serial primary key,
-    isAdmin boolean,
+    user_id serial primary key,
+    is_admin boolean,
     email text,
-    passHash text,
-    firstName varchar(50),
-    lastname varchar(50),
-    companyId integer references company(companyId)
+    pass_hash text,
+    first_name varchar(50),
+    last_name varchar(50),
+    company_id integer references company(company_id)
 );
 
 create table stores (
-    storeId serial primary key,
-    companyId integer references company(companyId),
-    storeName varchar(100)
+    store_id serial primary key,
+    company_id integer references company(company_id),
+    store_name varchar(100)
 );
 
-create table salesItems (
-    itemNumber serial primary key,
-    storeId integer references stores(storeId),
-    itemName varchar(50),
-    itemDesc varchar(50),
-    itemPrice integer
+create table sales_items (
+    item_number serial primary key,
+    store_id integer references stores(store_id),
+    item_name varchar(50),
+    item_desc varchar(50),
+    item_price integer
 );
 
 create table customers (
-    customerNumber serial primary key,
-    storeId integer references stores(storeId),
-    custName varchar(75),
-    custAddress text,
-    custState varchar(2),
-    custZip numeric(5)
+    customer_number serial primary key,
+    store_id integer references stores(store_id),
+    cust_name varchar(75),
+    cust_address text,
+    cust_state varchar(2),
+    cust_zip numeric(5)
 );
 
 create table purchases (
-    purchaseNumber serial primary key,
-    storeId integer references stores(storeId),
+    purchase_number serial primary key,
+    store_id integer references stores(store_id),
     vendor varchar(55),
     amount integer,
-    itemDesc varchar(55),
-    purchaseDate date
+    item_desc varchar(55),
+    purchase_date date
 );
 
 create table sales (
-    salesNumber serial primary key,
-    storeId integer references stores(storeId),
-    itemNumber integer references salesItems(itemNumber),
-    saleDate date
+    sales_number serial primary key,
+    store_id integer references stores(store_id),
+    item_number integer references sales_items(item_number),
+    sale_date date
 );
