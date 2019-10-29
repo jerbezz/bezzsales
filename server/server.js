@@ -5,6 +5,7 @@ const session = require('express-session')
 
 //controllers from server/controllers
 const authCtrl = require('./controllers/authCtrl')
+const createCompany = require('./controllers/createCompany')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -31,3 +32,6 @@ app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.get('/logout', authCtrl.logout)
 app.get('/auth/user-data', authCtrl.userData)
+
+// create a company endpoint
+app.post('company/create', createCompany.create)
