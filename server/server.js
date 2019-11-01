@@ -34,4 +34,4 @@ app.get('/logout', authCtrl.logout)
 app.get('/auth/user-data', authCtrl.userData)
 
 // create a company endpoint
-app.post('company/create', createCompany.create)
+app.post('/company/create', createCompany.create)
