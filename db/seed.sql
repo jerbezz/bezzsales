@@ -1,6 +1,7 @@
 create table company (
     company_id serial primary key,
-    company_name varchar(255)
+    company_name varchar(255),
+    user_id integer references users(user_id)
 );
 
 create table users (
