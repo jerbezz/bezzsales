@@ -6,9 +6,7 @@ insert into company (
     $2
 );
 
-update users 
-set company_id = $2
-where user_id = $2;
-
-select user_id, is_admin, email, first_name, last_name, company_id from users
-where user_id = $2
+update users
+set company_id = company.company_id
+from company
+where company.user_id = $2

@@ -5,21 +5,22 @@ import axios from 'axios'
 function Stores() {
     const [data, setData] = useState([])
     const [company, setCompany] = useState('')
-
-    async function getUserData() {
-        const response = await axios.get('/auth/user-data')
-        setData(response.data)
-    }
-    useEffect(() => {
-        getUserData()
-    }, [])
-
+ 
     const handleCreateCompany = async (e) => {
         e.preventDefault()
         await axios.post("/company/create", {
             companyName: company
         })
     }
+    
+    async function getUserData() {
+        const response = await axios.get('/auth/user-data')
+        setData(response.data)
+    }
+    
+    useEffect(() => {
+        getUserData()
+    }, [])
 
     console.log({ data })
     return data.companyId ? (
